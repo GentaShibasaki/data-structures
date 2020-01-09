@@ -11,9 +11,28 @@ class LinkedList {
     }
   }
 
-  appendToTail(value) {}
+  appendToTail(value) {
+    let newNode = new Node(value);
+    this.tail = newNode;
+    if (this.head) {
+      this.head.next = newNode;
+    } else {
+      this.head = newNode;
+    }
+    return newNode;
+  }
 
-  removeHead() {}
+  removeHead() {
+    let result = "";
+    if (this.head.next === null) {
+      this.head = {};
+      this.tail = {};
+    } else {
+      result = this.head;
+      this.head = this.head.next;
+    }
+    return result;
+  }
 
   findNode(value) {}
 
