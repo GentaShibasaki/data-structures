@@ -14,9 +14,16 @@ class LinkedList {
   appendToTail(value) {
     let newNode = new Node(value);
     this.tail = newNode;
-    if (this.head) {
-      this.head.next = newNode;
-    } else {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.next === null) {
+        currentNode.next = newNode;
+        break;
+      } else {
+        currentNode = currentNode.next;
+      }
+    }
+    if (!this.head) {
       this.head = newNode;
     }
     return newNode;
@@ -34,7 +41,14 @@ class LinkedList {
     return result;
   }
 
-  findNode(value) {}
+  findNode(value) {
+    function recursion(value, node) {
+      if (node.value === value) return node;
+      if (node.next === null) return null;
+      return recursion(value, node.next);
+    }
+    return recursion(value, this.head);
+  }
 
   /*
 +-------------------------+
