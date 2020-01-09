@@ -18,11 +18,12 @@ class Tree {
           if (recursion(item.children, value)) return true;
         }
       }
+      return false;
     }
 
     if (this.value === value) return true;
 
-    return recursion(this.children, value) ? true : false;
+    return recursion(this.children, value);
   }
 
   /*
