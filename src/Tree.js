@@ -6,16 +6,23 @@ class Tree {
 
   addChild(value) {
     const newNode = new Tree(value);
-
     this.children.push(newNode);
   }
 
   contains(value) {
-    for (const element in this.children) {
-      if (element.value === value) return true;
+    function recursion(children, value) {
+      // if ( child.value === value ) return true;
+      if (children.length !== 0) {
+        for (const item of children) {
+          if (item.value === value) return true;
+          if (recursion(item.children, value)) return true;
+        }
+      }
     }
-    if (this.value === value || this.children[0].value === value) return true;
-    return false;
+
+    if (this.value === value) return true;
+
+    return recursion(this.children, value) ? true : false;
   }
 
   /*

@@ -31,13 +31,12 @@ class LinkedList {
 
   removeHead() {
     let result = "";
-    if (this.head.next === null) {
-      this.head = {};
-      this.tail = {};
-    } else {
-      result = this.head;
-      this.head = this.head.next;
-    }
+    // if (this.head.next === null) {
+    // this = {};
+    // } else {
+    result = this.head;
+    this.head = this.head.next;
+    // }
     return result;
   }
 
