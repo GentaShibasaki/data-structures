@@ -11,6 +11,9 @@ class Tree {
   }
 
   contains(value) {
+    for (const element in this.children) {
+      if (element.value === value) return true;
+    }
     if (this.value === value || this.children[0].value === value) return true;
     return false;
   }
