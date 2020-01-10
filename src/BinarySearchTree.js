@@ -46,13 +46,14 @@ class BinarySearchTree {
   }
 
   traverseDepthFirstInOrder(func) {
+    let parent = this;
     function recursion(parent, func) {
-      if (parent.left === null) func(parent, func);
+      if (parent.left === null) func(parent);
       if (parent.left !== null) recursion(parent.left, func);
       if (parent.left !== null || parent.right !== null) func(parent);
       if (parent.right !== null) recursion(parent.right, func);
     }
-    recursion(this, func);
+    recursion(parent, func);
   }
 }
 
