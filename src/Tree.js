@@ -11,11 +11,13 @@ class Tree {
 
   contains(value) {
     function recursion(children, value) {
-      // if ( child.value === value ) return true;
       if (children.length !== 0) {
         for (const item of children) {
-          if (item.value === value) return true;
-          if (recursion(item.children, value)) return true;
+          if (item.value === value) {
+            return true;
+          } else if (recursion(item.children, value)) {
+            return true;
+          }
         }
       }
       return false;
