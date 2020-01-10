@@ -40,13 +40,13 @@ class LinkedList {
     return result;
   }
 
-  findNode(value) {
-    function recursion(value, node) {
-      if (node.value === value) return node;
-      if (node.next === null) return null;
-      return recursion(value, node.next);
+  findNode(searchValue) {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.value === searchValue) return currentNode;
+      currentNode = currentNode.next;
     }
-    return recursion(value, this.head);
+    return null;
   }
 
   /*
