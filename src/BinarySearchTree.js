@@ -6,18 +6,25 @@ class BinarySearchTree {
   }
 
   insert(value) {
-    function recursion(parent) {
-      if (parent.value > value && parent.left === null)
-        parent.left = new BinarySearchTree(value);
-      if (parent.value < value && parent.right === null)
-        parent.right = new BinarySearchTree(value);
-
-      if (parent.value > value && parent.left !== null) recursion(parent.left);
-      if (parent.value < value && parent.right !== null)
-        recursion(parent.right);
+    const newNode = new BinarySearchTree(value);
+    let parent = this;
+    let check = true;
+    while (check) {
+      if (parent.value > value && parent.left !== null) {
+        parent = parent.left;
+      } else if (parent.value < value && parent.right !== null) {
+        parent = parent.right;
+      } else if (parent.value > value && parent.left === null) {
+        parent.left = newNode;
+        check = false;
+      } else if (parent.value < value && parent.right === null) {
+        parent.right = newNode;
+        check = false;
+      } else if (parent.value === value) {
+        break;
+      }
     }
 
-    recursion(this);
     return this;
   }
 
