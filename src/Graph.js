@@ -9,12 +9,9 @@ class Graph {
   }
 
   addNode(node) {
-    if (!this.nodes[node]) {
-      this.nodes[node] = [];
-    } else {
-      this.nodes[node].push(node);
-    }
+    if (!this.nodes[node]) this.nodes[node] = [];
   }
+
   removeNode(node) {
     delete this.nodes[node];
     for (const key in this.nodes) {
@@ -24,7 +21,7 @@ class Graph {
 
   contains(node) {
     for (const key in this.nodes) {
-      if (+key === node) return true;
+      if (+key === node) return true; // + works as parseInt here
     }
     return false;
   }
