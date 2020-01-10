@@ -29,16 +29,20 @@ class BinarySearchTree {
   }
 
   contains(value) {
-    function recursion(parent) {
-      if (parent.value === value) return true;
-      if (parent.value > value && parent.left !== null)
-        return recursion(parent.left);
-      if (parent.value < value && parent.right !== null)
-        return recursion(parent.right);
-      return false;
-    }
+    let parent = this;
 
-    return recursion(this);
+    while (true) {
+      if (parent.value === value) {
+        return true;
+      } else if (parent.value > value && parent.left !== null) {
+        parent = parent.left;
+      } else if (parent.value < value && parent.right !== null) {
+        parent = parent.right;
+      } else if (parent.left === null || parent.right === null) {
+        break;
+      }
+    }
+    return false;
   }
 
   traverseDepthFirstInOrder(func) {
