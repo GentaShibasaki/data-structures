@@ -9,13 +9,13 @@ class Tree {
     this.children.push(newNode);
   }
 
-  contains(value) {
-    function recursion(children, value) {
+  contains(searchValue) {
+    function traverseTree(children, searchValue) {
       if (children.length !== 0) {
         for (const item of children) {
-          if (item.value === value) {
+          if (item.value === searchValue) {
             return true;
-          } else if (recursion(item.children, value)) {
+          } else if (traverseTree(item.children, searchValue)) {
             return true;
           }
         }
@@ -23,9 +23,9 @@ class Tree {
       return false;
     }
 
-    if (this.value === value) return true;
+    if (this.value === searchValue) return true;
 
-    return recursion(this.children, value);
+    return traverseTree(this.children, searchValue);
   }
 
   /*
